@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "rootDir": ".", // Os arquivos-fonte estao em backend/src
+    "outDir": "../dist", // Gera o JS compilado em backend/dist
+    "module": "Node16", // Modo de modulo Node moderno (respeita o "type" do package.json)
+    "target": "es2022", // Versao do JS para compilar (moderna)
+    "esModuleInterop": true, // Permite usar `import x from 'y'` com modulos CommonJS
+    "strict": true, // Ativa toda a checagem estrita de tipos
+    "skipLibCheck": true, // Pula a checagem de tipos de arquivos .d.ts (build mais rapido)
+    "moduleResolution": "node16", // Resolucao de modulos Node moderna (substitui node10/node depreciado)
+    "resolveJsonModule": true, // Permite importar arquivos .json
+    "forceConsistentCasingInFileNames": true // Evita bugs de diferenca entre maiusculas/minusculas
+  },
+  "include": ["**/*.ts", ".env.ts"], // Compila todos os arquivos TS dentro de backend/src
+  "exclude": ["node_modules"] // Arquivos/pastas para ignorar
+}
