@@ -23,5 +23,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(ENV.PORT, () => {
-  console.log("Servidor ativo.");
+  console.log("Servidor ativo 👍.");
 });

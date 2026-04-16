@@ -43,3 +43,26 @@ export const criarLivro = async (dados: NewLivro) => {
   const [livro] = await db.insert(livros).values(dados).returning();
   return livro;
 };
+
+export const getAllLivros = async () => {
+  const [livros] = await db.query.livros.findMany({
+    with: {
+      user: true,
+    },
+    orderBy: (livros, { desc }) => [desc(livros.createdAt)],
+  });
+  return livros;
+};
+
+export const getLivroById = async (id: string) => {
+  return db.query.livros.findFirst({
+    where: eq(users.id, id),
+    with: {
+      user: true,
+      comentarios: {
+        with: { user: true },
+        orderBy: (comentarios, { desc }) => [desc(comentarios.createdAt)],
+      },
+    },
+  });
+};
