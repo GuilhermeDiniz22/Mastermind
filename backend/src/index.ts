@@ -2,6 +2,9 @@ import express from "express";
 import { ENV } from "./config/config";
 import { clerkMiddleware } from '@clerk/express'
 import cors from 'cors';
+import userRoutes from './routes/userRoutes'
+import comentarioRoutes from './routes/comentarioRoutes'
+import livroRoutes from './routes/livroRoutes'
 
 
 const app = express();
@@ -21,6 +24,10 @@ app.get("/", (req, res) => {
     },
   });
 });
+
+app.use('/api/usuarios', userRoutes);
+app.use('/api/comentarios', comentarioRoutes);
+app.use('/api/livros', livroRoutes);
 
 app.listen(ENV.PORT, () => {
   console.log("Servidor ativo 👍.");

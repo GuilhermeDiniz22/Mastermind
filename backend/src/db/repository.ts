@@ -255,3 +255,12 @@ export const getComentarioById = async (id: string) => {
     with: { user: true },
   });
 };
+
+export const deleteComentario = async (id: string) => {
+  assertUuid(id, "id");
+  const [comentario] = await db
+    .delete(comentarios)
+    .where(eq(comentarios.id, id))
+    .returning();
+  return comentario;
+};
